@@ -1,10 +1,10 @@
 package model
 
 type Bunker struct {
-	ID       string `json:"id"`
-	NAME     string `json:"name"`
-	CATEGORY string `json:"category"`
-	PLAQUE   string `json:"plaque"`
+	ID       string `json:"id /n"`
+	NAME     string `json:"name /n"`
+	CATEGORY string `json:"category /n"`
+	PLAQUE   string `json:"plaque /n"`
 }
 
 var InitialData = []Bunker{
