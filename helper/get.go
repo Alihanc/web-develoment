@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/Alihanc/web-develoment/model"
+	"github.com/gorilla/mux"
 )
 
 func Get(w http.ResponseWriter, r *http.Request) {
@@ -19,5 +20,15 @@ func Get(w http.ResponseWriter, r *http.Request) {
 	if err != nil {            // if there is an error
 		log.Print("template executing error: ", err) //log it
 	}*/
-	json.NewEncoder(w).Encode(Bunker)
+	vars := mux.Vars(r)
+	key := vars["id"]
+
+	// Loop over all of our Articles
+	// if the article.Id equals the key we pass in
+	// return the article encoded as JSON
+	for _, bunker := range Bunker {
+		if bunker.Id == key {
+			json.NewEncoder(w).Encode(bunker)
+		}
+	}
 }

@@ -8,6 +8,6 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/bunker", helper.Get)
+	http.HandleFunc("/bunker/{id}", helper.Get)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
