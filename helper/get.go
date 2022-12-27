@@ -10,7 +10,7 @@ import (
 
 func Get(w http.ResponseWriter, r *http.Request) {
 
-	Bunker := model.InitialData
+	//Bunker := model.InitialData
 
 	/*t, err := template.ParseFiles("model") //parse the html file homepage.html
 	if err != nil {                        // if there is an error
@@ -26,7 +26,7 @@ func Get(w http.ResponseWriter, r *http.Request) {
 	// Loop over all of our Articles
 	// if the article.Id equals the key we pass in
 	// return the article encoded as JSON
-	for _, bunker := range Bunker {
+	for _, bunker := range model.InitialData {
 		if bunker.Id == key {
 			json.NewEncoder(w).Encode(bunker)
 		}
