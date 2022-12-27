@@ -1,9 +1,10 @@
 package main
 
 import (
-	helper "ht/helper"
 	"log"
 	"net/http"
+
+	"github.com/Alihanc/web-develoment/helper"
 )
 
 func main() {

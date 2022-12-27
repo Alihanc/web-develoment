@@ -5,9 +5,7 @@ import (
 	"net/http"
 	"text/template"
 
-	model "ht/model"
-
-	"http"
+	"github.com/Alihanc/web-develoment/model"
 )
 
 func Get(w http.ResponseWriter, r *http.Request) {
