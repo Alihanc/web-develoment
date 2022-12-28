@@ -1,34 +1,26 @@
 package helper
 
 import (
-	"encoding/json"
+	"fmt"
 	"net/http"
 
-	"github.com/Alihanc/web-develoment/model"
 	"github.com/gorilla/mux"
 )
 
 func Get(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
 
-	//Bunker := model.InitialData
+	//Bunke := &model.InitialData
+	vars := mux.Vars(r)["id"]
+	fmt.Fprintf(w, "key"+vars)
 
-	/*t, err := template.ParseFiles("model") //parse the html file homepage.html
-	if err != nil {                        // if there is an error
-		log.Print("template parsing error: ", err) // log it
-	}
-	err = t.Execute(w, Bunker) //execute the template and pass it the HomePageVars struct to fill in the gaps
-	if err != nil {            // if there is an error
-		log.Print("template executing error: ", err) //log it
-	}*/
-	vars := mux.Vars(r)
-	key := vars["id"]
+	// Loop over all of our Bunker
+	// if the bunker.Id equals the key we pass in
+	// return the bunker encoded as JSON
+	/*for _, bunker := range *Bunke {
+		if bunker.Id == vars {
 
-	// Loop over all of our Articles
-	// if the article.Id equals the key we pass in
-	// return the article encoded as JSON
-	for _, bunker := range model.InitialData {
-		if bunker.Id == key {
 			json.NewEncoder(w).Encode(bunker)
 		}
-	}
+	}*/
 }
