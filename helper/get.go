@@ -2,25 +2,40 @@ package helper
 
 import (
 	"encoding/json"
+	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/Alihanc/web-develoment/model"
 	"github.com/gorilla/mux"
 )
 
-func Get(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
+func HomePage(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Welcome home")
 
+}
+func All(w http.ResponseWriter, r *http.Request) {
+	json.NewEncoder(w).Encode(model.InitialData)
+}
+
+func Get(w http.ResponseWriter, r *http.Request) {
+
+	Bunker := model.InitialData
 	vars := mux.Vars(r)["id"]
-	//fmt.Fprintf(w, "key"+vars)
+	//vars := mux.Vars(r)
+
+	//key := vars["id"]
 
 	// Loop over all of our Bunker
 	// if the bunker.Id equals the key we pass in
 	// return the bunker encoded as JSON
-	for _, bunker := range model.InitialData {
+	for _, bunker := range Bunker {
 		if bunker.ID == vars {
 
-			json.NewEncoder(w).Encode(bunker)
+			err := json.NewEncoder(w).Encode(bunker)
+			if err != nil {
+				log.Fatalln("There was an error encoding the initialized struct")
+			}
 		}
 	}
 }
