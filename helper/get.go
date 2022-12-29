@@ -22,9 +22,7 @@ func Get(w http.ResponseWriter, r *http.Request) {
 
 	Bunker := model.InitialData
 	vars := mux.Vars(r)["id"]
-	//vars := mux.Vars(r)
-
-	//key := vars["id"]
+	//vars := r.URL.Query().Get("id")
 
 	// Loop over all of our Bunker
 	// if the bunker.Id equals the key we pass in
@@ -32,7 +30,7 @@ func Get(w http.ResponseWriter, r *http.Request) {
 	for _, bunker := range Bunker {
 		if bunker.ID == vars {
 
-			err := json.NewEncoder(w).Encode(bunker)
+			err := json.NewEncoder(w).Encode(&bunker)
 			if err != nil {
 				log.Fatalln("There was an error encoding the initialized struct")
 			}
