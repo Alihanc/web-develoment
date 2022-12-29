@@ -2,7 +2,6 @@ package helper
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 
@@ -10,10 +9,6 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func HomePage(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Welcome home")
-
-}
 func All(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(model.InitialData)
 }
