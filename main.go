@@ -11,7 +11,10 @@ import (
 func main() {
 	myRouter := mux.NewRouter().StrictSlash(true)
 	myRouter.HandleFunc("/", helper.HomePage)
-	myRouter.HandleFunc("/bunker/all", helper.All)
+	myRouter.HandleFunc("/bunkers", helper.All)
+	myRouter.HandleFunc("/bunker", helper.NewBunker).Methods("POST")
+	myRouter.HandleFunc("/bunker/{id}", helper.DeleteBunker).Methods("DELETE")
+	myRouter.HandleFunc("/bunker/update", helper.Update).Methods("PUT")
 	myRouter.HandleFunc("/bunker/{id}", helper.Get)
 	log.Fatal(http.ListenAndServe(":8080", myRouter))
 
