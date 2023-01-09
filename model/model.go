@@ -14,20 +14,20 @@ var InitialData = []Bunker{
 		NAME:           "God of War",
 		CATEGORY:       "Open World",
 		PLAQUE:         "34 ZPA 45",
-		MAINTANCE_DATE: "2022, 12, 13",
+		MAINTANCE_DATE: "13-12-2022",
 	},
 	{
 		ID:             "2",
 		NAME:           "World War",
 		CATEGORY:       "Fantasy",
 		PLAQUE:         "59 KPL 45",
-		MAINTANCE_DATE: "2022, 10, 13",
+		MAINTANCE_DATE: "15-11-2022",
 	},
 	{
 		ID:             "3",
 		NAME:           "BattleFiled",
 		CATEGORY:       "Shooter",
 		PLAQUE:         "59 KMT 67",
-		MAINTANCE_DATE: "2022, 11, 15",
+		MAINTANCE_DATE: "05-12-2022",
 	},
 }
