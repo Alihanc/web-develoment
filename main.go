@@ -16,6 +16,8 @@ func main() {
 	myRouter.HandleFunc("/delete/{id}", helper.DeleteBunker).Methods("DELETE")
 	myRouter.HandleFunc("/bunker/update", helper.Update).Methods("PUT")
 	myRouter.HandleFunc("/bunker/{id}", helper.Get)
+	myRouter.HandleFunc("/bunker/3600", helper.Maintance_3600)
+	myRouter.HandleFunc("/bunker/7200", helper.Maintance_7200)
 	log.Fatal(http.ListenAndServe(":8080", myRouter))
 
 }
