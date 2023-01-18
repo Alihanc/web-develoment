@@ -1,15 +1,18 @@
 package helper
 
 import (
+	"encoding/json"
 	"fmt"
+	"log"
+	"net/http"
 	"time"
 
 	"github.com/Alihanc/web-develoment/model"
 )
 
-func Maintance_3600() {
+func Maintance_3600(w http.ResponseWriter, r *http.Request) {
 
-	start_time, err := time.Parse("20-01-2023", model.InitialData.MAINTANCE_DATE)
+	start_time, err := time.Parse("20-01-2023", model.InitialData.MAINTANCEDATE)
 	if err != nil {
 		panic(err)
 	}
@@ -24,16 +27,19 @@ func Maintance_3600() {
 			break
 		} else {
 
-			//fmt.Printf("Bakıma kalan süre: %02d\n", timeRemaining)
-			fmt.Printf("Days: %02d Hours: %02d Minutes: %02d Seconds: %02d\n", timeRemaining.d, timeRemaining.h, timeRemaining.m, timeRemaining.s)
+			err := json.NewEncoder(w).Encode(&timeRemaining)
+			if err != nil {
+				log.Fatalln("There was an error encoding the initialized struct")
+			}
 
 		}
 
 	}
 }
-func Maintance_7200() {
+func Maintance_7200(w http.ResponseWriter, r *http.Request) {
+	bunker := model.InitialData
 
-	start_time, err := time.Parse("20-01-2023", model.InitialData.MAINTANCE_DATE)
+	start_time, err := time.Parse("03-01-2023", bunker.MAINTANCEDATE)
 	if err != nil {
 		panic(err)
 	}
@@ -47,9 +53,10 @@ func Maintance_7200() {
 			fmt.Println("Bakım zamanı geldi.")
 			break
 		} else {
-
-			//fmt.Printf("Bakıma kalan süre: %02d\n", timeRemaining)
-			fmt.Printf("Days: %02d Hours: %02d Minutes: %02d Seconds: %02d\n", timeRemaining.d, timeRemaining.h, timeRemaining.m, timeRemaining.s)
+			err := json.NewEncoder(w).Encode(&timeRemaining)
+			if err != nil {
+				log.Fatalln("There was an error encoding the initialized struct")
+			}
 
 		}
 
